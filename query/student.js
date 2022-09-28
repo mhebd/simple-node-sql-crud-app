@@ -39,6 +39,13 @@ class Student {
 	static deleteOne(id) {
 		return db.execute(`DELETE FROM Students WHERE StudentID = ${id}`);
 	}
+
+	// Get student full information
+	static studentDetails(id) {
+		return db.execute(
+			`SELECT * FROM Students INNER JOIN Results WHERE Students.StudentID = ${id} AND Results.StudentID = ${id}`
+		);
+	}
 }
 
 module.exports = Student;

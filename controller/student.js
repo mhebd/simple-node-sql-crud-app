@@ -88,3 +88,22 @@ exports.deleteStudent = asyncHdl(async (req, res, next) => {
 		student,
 	});
 });
+
+// Get student full information
+exports.studentDetails = asyncHdl(async (req, res, next) => {
+	const { id } = req.params;
+
+	const hasStudent = await Student.findOne(id);
+
+	if (hasStudent[0].length <= 0) {
+		return next(new errMsg(`Student on id ${id} is not found!`, 404));
+	}
+
+	const student = await Student.studentDetails(id);
+
+	res.status(200).json({
+		success: true,
+		message: 'Student full information.',
+		student: student[0][0],
+	});
+});

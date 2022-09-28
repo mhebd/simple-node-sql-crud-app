@@ -39,6 +39,13 @@ class Teacher {
 	static deleteOne(id) {
 		return db.execute(`DELETE FROM Teachers WHERE TeacherID = ${id}`);
 	}
+
+	// Teacher full information
+	static teacherDetails(id) {
+		return db.execute(
+			`SELECT * FROM Teachers INNER JOIN Salarys WHERE Teachers.TeacherID = ${id} AND Salarys.TeacherID = ${id}`
+		);
+	}
 }
 
 module.exports = Teacher;
