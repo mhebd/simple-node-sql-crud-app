@@ -16,5 +16,8 @@
     "helmet": "^6.0.0",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
   }
 }
